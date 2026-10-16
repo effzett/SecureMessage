@@ -1,0 +1,56 @@
+SecureMessage für macOS (Apple Silicon: M1, M2, M3, M4 …)
+==========================================================
+
+Installation
+------------
+1. SecureMessage.app auf die Verknüpfung "Programme" ziehen.
+2. SecureMessage aus dem Ordner "Programme" starten.
+
+
+Warum warnt macOS beim ersten Start?
+------------------------------------
+SecureMessage ist nicht bei Apple notarisiert (das setzt eine kostenpflichtige
+Apple-Mitgliedschaft voraus). macOS kann die Herkunft deshalb nicht prüfen und
+blockiert den ersten Start von Programmen, die aus dem Internet geladen wurden.
+Das ist kein Hinweis auf Schadsoftware, sondern betrifft alle nicht
+notarisierten Programme. Je nach macOS-Version erscheint eine dieser Meldungen:
+
+  a) "SecureMessage" kann nicht geöffnet werden, da Apple es nicht auf
+     schädliche Software überprüfen kann.
+  b) "SecureMessage" ist beschädigt und kann nicht geöffnet werden.
+
+Wichtig: Nicht auf "In den Papierkorb legen" klicken, sondern auf "Fertig"
+bzw. "Abbrechen".
+
+
+Lösung 1: Systemeinstellungen (für Meldung a)
+---------------------------------------------
+1. Systemeinstellungen > Datenschutz & Sicherheit öffnen.
+2. Ganz nach unten scrollen. Dort steht:
+   "SecureMessage" wurde blockiert ...
+3. Auf "Dennoch öffnen" klicken und mit dem Mac-Passwort bestätigen.
+Das ist nur einmal nötig.
+
+
+Lösung 2: Terminal (für Meldung b, funktioniert auch bei a)
+-----------------------------------------------------------
+1. Programm "Terminal" öffnen (Programme > Dienstprogramme).
+2. Diese Zeile einfügen und mit Return bestätigen:
+
+       xattr -dr com.apple.quarantine /Applications/SecureMessage.app
+
+   Der Befehl entfernt nur die Download-Markierung dieser einen App.
+   Er braucht kein Administrator-Passwort, wenn die App im eigenen
+   Programme-Ordner liegt.
+3. SecureMessage normal per Doppelklick starten.
+
+
+Updates
+-------
+Es gibt keine automatische Update-Prüfung; die App nimmt keinerlei Verbindung
+ins Internet auf. Neue Versionen erhältst du direkt vom Herausgeber. Nach dem
+Ersetzen der App ist der obige Schritt erneut einmal nötig.
+
+
+Hinweis: Unsignierte Testversion, keine unabhängige Sicherheitsprüfung.
+Kontakt: fz@zenmeister.de
